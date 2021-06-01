@@ -141,3 +141,16 @@ func TestDupePrompts(t *testing.T) {
 		}
 	}
 }
+
+func TestEmptyPrompts(t *testing.T) {
+	for k, _ := range Packs {
+		g := &Game{
+			Packs: []string{k},
+		}
+
+		g.loadPackPrompts()
+		if len(g.availablePrompts) == 0 {
+			t.Error(k, ": Didn't have any prompts: ")
+		}
+	}
+}

@@ -153,6 +153,14 @@ func (g *Game) loadPackPrompts() {
 		pack := Packs[v]
 		g.availablePrompts = append(g.availablePrompts, pack.Prompts...)
 	}
+	// If none of the available packs have prompts, "steal" the prompts of a random other pack
+	for {
+		if len(g.availablePrompts) != 0 {
+			break
+		}
+		pack := GetRandomPack()
+		g.availablePrompts = append(g.availablePrompts, pack.Prompts...)
+	}
 }
 
 // AddPlayer attempts to add a player to the game, if it fails (hit the limit for example) then it returns false

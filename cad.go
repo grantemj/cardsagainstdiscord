@@ -2,6 +2,7 @@ package cardsagainstdiscord
 
 import (
 	"fmt"
+	"math/rand"
 	"github.com/jonas747/discordgo"
 	"github.com/pkg/errors"
 	"strings"
